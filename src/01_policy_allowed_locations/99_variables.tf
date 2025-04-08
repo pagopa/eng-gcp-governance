@@ -10,6 +10,12 @@ variable "customer_id" {
   default     = "C00siwdxu"
 }
 
+variable "folder_id" {
+  description = "FolderID Google Cloud"
+  type        = string
+  default     = "47551051631" # pagopa
+}
+
 variable "domain" {
   description = "Dominio Google Workspace (ad esempio, mycompany.com)"
   type        = string
