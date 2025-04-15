@@ -10,7 +10,7 @@ variable "customer_id" {
   default     = "C00siwdxu"
 }
 
-variable "folder_id" {
+variable "folder_id_pagopa" {
   description = "FolderID Google Cloud"
   type        = string
   default     = "47551051631" # pagopa
@@ -43,16 +43,16 @@ variable "zone" {
 variable "folder_id_dev" {
   description = "FolderID Google Cloud"
   type        = string
-  default     = "47551051631" # dev
+  default     = "286367851296" # dev
 }
 
 variable "folder_id_uat" {
   description = "FolderID Google Cloud"
   type        = string
-  default     = "47551051631" # uat
+  default     = "794602495691" # uat
 }
 variable "folder_id_prod" {
   description = "FolderID Google Cloud"
   type        = string
-  default     = "47551051631" # prod
+  default     = "797731740140" # prod
 }
