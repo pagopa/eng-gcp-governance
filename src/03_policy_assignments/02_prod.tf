@@ -1,5 +1,5 @@
 module "prod_assignments" {
-  source = "./modules/dev"
+  source = "./modules/prod"
 
   folder_id = var.folder_id_prod
 }
