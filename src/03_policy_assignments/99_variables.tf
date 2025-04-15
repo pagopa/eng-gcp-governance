@@ -39,3 +39,20 @@ variable "zone" {
   type        = string
   default     = "europe-west8-a"
 }
+
+variable "folder_id_dev" {
+  description = "FolderID Google Cloud"
+  type        = string
+  default     = "47551051631" # dev
+}
+
+variable "folder_id_uat" {
+  description = "FolderID Google Cloud"
+  type        = string
+  default     = "47551051631" # uat
+}
+variable "folder_id_prod" {
+  description = "FolderID Google Cloud"
+  type        = string
+  default     = "47551051631" # prod
+}
