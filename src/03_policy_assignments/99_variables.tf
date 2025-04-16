@@ -1,5 +1,5 @@
 variable "organization_id" {
-  description = "ID della org GCP"
+  description = "OrganizationID Google Cloud"
   type        = string
   default     = "520838205140"
 }
@@ -17,42 +17,42 @@ variable "folder_id_pagopa" {
 }
 
 variable "domain" {
-  description = "Dominio Google Workspace (ad esempio, mycompany.com)"
+  description = "Domain Google Workspace "
   type        = string
   default     = "pagopa.it"
 }
 
 variable "project_id" {
-  description = "ID del progetto GCP"
+  description = "ProjectID Google Cloud"
   type        = string
   default     = "organization-443016"
 }
 
 variable "region" {
-  description = "Regione GCP"
+  description = "Region Google Cloud"
   type        = string
   default     = "europe-west8"
 }
 
 variable "zone" {
-  description = "Zona GCP"
+  description = "Zone Google Cloud"
   type        = string
   default     = "europe-west8-a"
 }
 
 variable "folder_id_dev" {
-  description = "FolderID Google Cloud"
+  description = "FolderID Google Cloud Dev"
   type        = string
   default     = "286367851296" # dev
 }
 
 variable "folder_id_uat" {
-  description = "FolderID Google Cloud"
+  description = "FolderID Google Cloud UAT"
   type        = string
   default     = "794602495691" # uat
 }
 variable "folder_id_prod" {
-  description = "FolderID Google Cloud"
+  description = "FolderID Google Cloud Prod"
   type        = string
   default     = "797731740140" # prod
 }
