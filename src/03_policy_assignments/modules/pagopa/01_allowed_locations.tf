@@ -7,7 +7,11 @@ resource "google_org_policy_policy" "resource_allowed_locations" {
 
     rules {
       values {
-        allowed_values = ["in:eu"]
+        allowed_values = [
+          "in:it-locations",           # italy
+          "in:de-locations",           # germany
+          "in:europe-west1-locations", # belgium
+        ]
       }
     }
   }
