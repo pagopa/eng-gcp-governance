@@ -1,6 +1,6 @@
 locals {
   dev-ai-io = {
-    project_id  = "dev-ai-io-107243"
+    project_id = "dev-ai-io-107243"
   }
 }
 

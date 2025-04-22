@@ -11,8 +11,8 @@ locals {
 
 resource "google_org_policy_policy" "iam_managed_disableServiceAccountKeyCreation" {
   for_each = local.iam_managed_disableServiceAccountKeyCreation
-  name   = "projects/${each.key}/policies/iam.managed.disableServiceAccountKeyCreation"
-  parent = "projects/${each.key}"
+  name     = "projects/${each.key}/policies/iam.managed.disableServiceAccountKeyCreation"
+  parent   = "projects/${each.key}"
 
   spec {
     inherit_from_parent = false
