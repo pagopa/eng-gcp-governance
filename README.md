@@ -8,9 +8,23 @@ This project contains all PagoPA policies and assignments to governance GCP work
 * `src/02_policy_custom` contains custom policies grouped by type definition
 * `src/03_policy_assignments` contains policy initiatives assignments to management groups or projects.
 
-## Terraform
+## 📋 Requirements
 
-Apply order is made by folders number.
+In order to manage the suitable version of terraform it is strongly recommended to install the following tool:
+
+* [tfenv](https://github.com/tfutils/tfenv): __Terraform__ version manager inspired by rbenv.
+
+Once these tools have been installed, install the terraform version shown in:
+
+* .terraform-version
+
+Next, install Goocle Cloud SDK:
+
+* brew install --cask google-cloud-sdk
+
+To log in to Google Cloud:
+
+* gcloud auth login
 
 ### How to use it
 
