@@ -1,5 +1,5 @@
 variable "organization_id" {
-  type = string
+  type    = string
   default = "520838205140"
 }
 
