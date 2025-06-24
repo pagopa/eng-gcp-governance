@@ -18,6 +18,9 @@ locals {
     uat-devportal-093525 = {
       enforce = "FALSE"
     },
+    prod-devportal-174604 = {
+      enforce = "FALSE"
+    },
   }
 }
 
