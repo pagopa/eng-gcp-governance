@@ -14,6 +14,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [google_org_policy_policy.compute_skipDefaultNetworkCreation](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/resources/org_policy_policy) | resource |
 | [google_org_policy_policy.iam_managed_disableServiceAccountKeyCreation](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/resources/org_policy_policy) | resource |
 | [google_org_policy_policy.iam_managed_disableServiceAccountKeyUpload](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/resources/org_policy_policy) | resource |
 | [google_org_policy_policy.resource_allowed_locations](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/resources/org_policy_policy) | resource |
