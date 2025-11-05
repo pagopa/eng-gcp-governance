@@ -6,6 +6,9 @@ locals {
     dev-ai-playground-01 = {
       allowed_values = ["in:eu-locations"]
     },
+    dev-ai-iosmartagentv2-560070 = {
+      allowed_values = ["in:eu-locations"]
+    },
   }
 }
 
