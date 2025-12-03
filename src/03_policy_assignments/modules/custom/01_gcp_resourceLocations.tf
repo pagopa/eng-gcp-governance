@@ -9,6 +9,9 @@ locals {
     dev-ai-iosmartagentv2-560070 = {
       allowed_values = ["in:eu-locations"]
     },
+    prod-ai-iosmartagentv2-086884 = {
+      allowed_values = ["in:eu-locations"]
+    },
   }
 }
 
