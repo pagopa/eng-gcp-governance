@@ -59,3 +59,23 @@ terraform providers lock \
   -platform=darwin_arm64 \
   -platform=linux_amd64
 ```
+
+---
+## Repository Structure & Details (Auto-generated)
+
+### Scopo
+Definisce ruoli IAM custom e Organization Policies GCP, assegnandole per applicare guardrail di sicurezza/compliance su progetti e cartelle; standardizza i permessi minimi e i blocchi organizzativi.
+
+### Cartelle
+- `src/01_custom_roles`: ruoli IAM custom JSON.
+- `src/02_policy_custom`: Organization Policies (constraint) con configurazioni parametriche.
+- `src/03_policy_assignments`: binding/assignment delle policies a org/folder/project.
+
+### Script
+Nessuno (solo definizioni).
+
+### Workflow
+Nessuno.
+
+### Note
+Backend GCS `tfapporg-terraform-state` (prefix `eng-gcp-governance/<subdir>`); valori org/progetto in `variables.tf`.
