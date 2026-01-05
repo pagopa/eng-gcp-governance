@@ -21,6 +21,9 @@ locals {
     prod-devportal-174604 = {
       enforce = "FALSE"
     },
+    dev-ai-iosmartagentv2-560070 = {
+      enforce = "FALSE"
+    }
   }
 }
 
