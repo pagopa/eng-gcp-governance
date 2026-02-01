@@ -1,4 +1,3 @@
-```prompt
 ---
 agent: agent
 description: Modify or create Terraform modules for GCP governance
@@ -64,4 +63,3 @@ provider "google" {
 ## References
 
 Follow conventions in `#file:.github/copilot-instructions.md`
-```

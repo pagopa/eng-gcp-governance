@@ -1,4 +1,3 @@
-```prompt
 ---
 agent: agent
 description: Create or modify GitHub Actions workflows for CI/CD
@@ -63,4 +62,3 @@ jobs:
 ## References
 
 Follow conventions in `#file:.github/copilot-instructions.md`
-```
