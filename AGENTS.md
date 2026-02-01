@@ -1,6 +1,6 @@
 # AGENTS.md - eng-gcp-governance
 
-This file is for **OpenAI Codex CLI** and other AI agents working with this repository.
+This file is for AI assistants and GitHub Copilot working with this repository.
 
 ## 📚 Main Instructions
 
@@ -19,6 +19,16 @@ Read this file first to understand the repository's purpose, structure, and conv
 | [.github/instructions/scripts.instructions.md](.github/instructions/scripts.instructions.md) | Shell script conventions |
 | [.github/instructions/json.instructions.md](.github/instructions/json.instructions.md) | JSON file conventions |
 | [.github/instructions/markdown.instructions.md](.github/instructions/markdown.instructions.md) | Documentation conventions |
+
+
+## 🧠 Available Skills
+
+| Skill | Description |
+|------|-------------|
+| [.github/skills/terraform-module/SKILL.md](.github/skills/terraform-module/SKILL.md) | Create or modify Terraform modules |
+| [.github/skills/script-python/SKILL.md](.github/skills/script-python/SKILL.md) | Create or modify Python scripts (with tests when required) |
+| [.github/skills/script-bash/SKILL.md](.github/skills/script-bash/SKILL.md) | Create or modify Bash scripts for simple operations |
+| [.github/skills/cicd-workflow/SKILL.md](.github/skills/cicd-workflow/SKILL.md) | Create or modify GitHub Actions workflows |
 
 ## 🎯 Available Prompts
 
