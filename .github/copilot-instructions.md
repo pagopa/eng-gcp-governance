@@ -1,34 +1,50 @@
-# Copilot Instructions - eng-gcp-governance
+# Global Copilot Instructions
 
-## 🎯 Repository Purpose
-Manages **GCP Organization Policies** and **Custom IAM Roles** for PagoPA, applying security guardrails across projects and folders.
+You are an expert software/platform engineer. Optimize for secure, consistent, and readable changes.
 
-## 📁 Key Project Structure
-- `src/01_custom_roles/`: Custom IAM roles with least privilege (Organization-level).
-- `src/02_policy_custom/`: Definitions of custom Organization Policy constraints.
-- `src/03_policy_set/` (if exists) or assignments in `src/03_policy_assignments/`:
-    - `01_pagopa.tf`: Org-level assignments.
-    - `02_dev.tf`, `02_uat.tf`, `02_prod.tf`: Environment-specific assignments.
+## Language policy
+- User chat can be Italian.
+- Everything in the repository must be English: code, comments, logs, CLI output, docs, commit/PR text, and configuration files.
 
-## 🛠️ Critical Workflows
-1. **Add Role**: Create `google_organization_iam_custom_role` in `src/01_custom_roles/`.
-2. **Assign Policy**: Update modules in `src/03_policy_assignments/modules/` or files in `src/03_policy_assignments/`.
-3. **Execution**: Use `./terraform.sh plan|apply` from the target component folder.
+## Instruction order
+1. Read local `AGENTS.md` first.
+2. Apply `.github/copilot-code-review-instructions.md` and `.github/copilot-commit-message-instructions.md` when relevant.
+3. Use `.github/repo-profiles.yml` as optional profile guidance for stack-specific setup.
+4. Apply matching `.github/instructions/*.instructions.md`.
+5. Use `.github/prompts/*.prompt.md` for repeatable tasks.
+6. Use `.github/skills/*/SKILL.md` for implementation patterns.
 
-## ✅ Mandatory Conventions
-- **Naming**:
-    - Roles: `pagopa_<domain>_<purpose>` (e.g., `pagopa_mailsage_user`).
-    - Policies: `01_<service>_<constraint>.tf`.
-- **Terraform**: Use GCS backend `tfapporg-terraform-state`, pin provider version (see `00_main.tf`), and use `google_org_policy_policy` resource.
-- **Organization IDs**: PagoPA Root (`47551051631`), Dev (`286367851296`), Uat (`794602495691`), Prod (`797731740140`).
-- **Logging**: Use emoji prefixes (✅ Success, ❌ Error, ⚠️ Warning, 🔍 Info, 🚀 Start).
+## Non-negotiables
+- Least privilege.
+- No hardcoded secrets.
+- Preserve existing conventions.
+- Prefer early return/guard clauses.
+- Prioritize readability over clever abstractions.
+- Update technical docs in English when behavior changes.
 
-## 🚫 What NOT to Do
-- ❌ Disable organization policies without security approval.
-- ❌ Hardcode folder or project IDs (use variables).
-- ❌ Use deprecated policy resources (always use `google_org_policy_policy`).
-- ❌ Create roles at project level (always use organization level).
+## Portability
+- This configuration is intentionally reusable across different repositories and tech stacks.
+- Apply only the instruction files relevant to the files being changed.
+- Follow `.github/security-baseline.md` and `.github/DEPRECATION.md` when introducing structural changes.
 
-## 📚 Reference
-See `README.md` for specific folder IDs and resource hierarchy details.
+## Script standards (Bash/Python)
+- Apply to both create and modify flows.
+- Start with purpose + usage examples.
+- Use emoji logs for state transitions.
+- Use simple control flow and early returns.
+- Bash: always `#!/usr/bin/env bash` (never POSIX `sh`).
+- Python: add unit tests for testable logic.
+- Python: if external dependencies are used, pin versions in `requirements.txt`.
 
+## Java and Node.js standards
+- Treat as project work (services/modules/components), not script work.
+- Add a short purpose JavaDoc/comment when intent is not obvious.
+- Keep unit tests simple and BDD-like.
+- Java default: JUnit 5 with `@DisplayName` and `given_when_then` naming.
+- Node default: built-in `node:test` + `node:assert/strict` (`describe`/`it` when available).
+
+## Validation baseline
+- Terraform: `terraform fmt` and `terraform validate`.
+- Bash: `bash -n` and `shellcheck -s bash` (if available).
+- Python/Java/Node.js: run unit tests relevant to the change.
+- Run `.github/scripts/validate-copilot-customizations.sh` for customization changes.

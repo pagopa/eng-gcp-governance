@@ -1,46 +1,20 @@
 ---
-applyTo: "**/*.json"
+applyTo: "**/authorizations/**/*.json,**/organization/**/*.json,**/src/**/*.json,**/data/**/*.json"
 ---
 
-# JSON Files Instructions - eng-gcp-governance
+# JSON Instructions
 
-## Purpose
+## Formatting
+- Use 2-space indentation.
+- Keep keys in alphabetical order when applicable.
+- Do not use trailing commas.
+- For machine-managed files (for example `package.json`, lock files), preserve ecosystem conventions.
 
-JSON files in this repository are primarily used for:
+## Authorization registries
+- Validate schema before commit.
+- Keep consistency with existing patterns in the file.
+- Use lowercase identifiers.
+- Avoid unnecessary structural changes.
 
-- Terraform variable files (alternative to `.tfvars`)
-- Configuration exports
-- Policy definitions (rarely)
-
-## Formatting Rules
-
-1. **Indentation**: 2 spaces (no tabs)
-2. **Line endings**: LF (Unix-style)
-3. **Final newline**: Required
-4. **Trailing commas**: Not allowed in JSON
-5. **Encoding**: UTF-8
-
-## Validation
-
-All JSON files must be valid JSON. Use `check-json` pre-commit hook.
-
-## Example Structure
-
-```json
-{
-  "key": "value",
-  "nested": {
-    "property": "value"
-  },
-  "array": [
-    "item1",
-    "item2"
-  ]
-}
-```
-
-## Do NOT
-
-- Store sensitive data (credentials, keys) in JSON files
-- Use JSON for Terraform variables when `.tfvars` is more appropriate
-- Include comments (JSON doesn't support them)
+## Language of content
+- Use technical English in descriptive/documentation fields intended for operational output.
