@@ -1,28 +1,33 @@
-<!-- markdownlint-disable -->
-<!--- Please always add a PR description as if nobody knows anything about the context these changes come from. -->
-<!--- Even if we are all from our internal team, we may not be on the same page. -->
-<!--- Write this PR as you were contributing to a public OSS project, where nobody knows you and you have to earn their trust. -->
-<!--- This will improve our projects in the long run! Thanks. -->
+## Description
 
-### List of changes
+<!-- Describe the governance change and the intended enforcement behavior. -->
 
-<!--- Describe your changes in detail -->
+## Change Type
 
-### Motivation and context
+- [ ] Custom role update
+- [ ] Policy definition update
+- [ ] Policy assignment update
+- [ ] Terraform module/refactor update
+- [ ] Documentation only
+- [ ] Other
 
-<!--- Why is this change required? What problem does it solve? -->
+## Governance Impact
 
-### Type of changes
+- Scope level (`org`, `folder`, `project`):
+- Affected policies/roles:
+- Enforcement effect:
+- Rollback strategy:
 
-- [ ] Add new governance rule
-- [ ] Update existing governance rule
-- [ ] Remove existing governance rule
+## Validation Evidence
 
-### Does this introduce a breaking change?
+- Terraform plan summary:
+- Non-production validation summary:
+- Additional checks:
 
-- [ ] Yes
-- [ ] No
+## Checklist
 
-### Other information
-
-<!-- Any other information that is important to this PR such as screenshots of how the component looks before and after the change. -->
+- [ ] Governance effect is explicit and justified
+- [ ] Scope (`org`/`folder`/`project`) is correct
+- [ ] `terraform fmt -recursive` and `terraform validate` executed
+- [ ] Non-production verification completed for impactful changes
+- [ ] No sensitive data included
