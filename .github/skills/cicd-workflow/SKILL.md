@@ -1,64 +1,58 @@
 ---
 name: cicd-workflow
-description: Guide for creating or modifying GitHub Actions workflows in this repository. Use when asked to update CI/CD pipelines.
+description: Create or modify secure GitHub Actions workflows for CI/CD pipelines.
 ---
 
-# CI/CD Workflow
+# CI/CD Workflow Skill
 
-## Context
+## When to use
+- Create or modify workflows.
+- Add CI/CD jobs.
+- Add cloud auth for Terraform or deployment steps.
 
-I need to create or modify a GitHub Actions workflow for GCP governance (policies, custom roles).
+## Mandatory rules
+- Prefer OIDC.
+- Pin every action to a full-length SHA.
+- Keep `permissions` least-privilege.
+- Keep step names and operational output in English.
 
-## Discovery
-
-Analyze existing workflows with `#codebase` in `.github/workflows/`.
-
-## Input Required
-
-- **Workflow name**: ${input:workflow_name}
-- **Purpose**: ${input:purpose}
-
-## Template
-
+## Minimal workflow example
 ```yaml
-# 📋 {workflow_name}.yml
-# 🎯 Purpose: {purpose}
-
-name: {workflow_name}
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+name: CI
+on: [pull_request]
 
 permissions:
-  id-token: write
   contents: read
-
-env:
-  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_REGION: europe-west8
+  id-token: write
 
 jobs:
-  plan:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout
-        uses: actions/checkout@v4
-
-      - name: 🔐 Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
-          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
-
-      - name: 🏗️ Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "~> 1.7"
+      - uses: actions/checkout@<FULL_LENGTH_COMMIT_SHA>
+      - run: terraform fmt -check -recursive
 ```
 
-## References
+## Auth snippets
 
-Follow conventions in `#file:.github/copilot-instructions.md`
+### AWS
+```yaml
+- uses: aws-actions/configure-aws-credentials@<FULL_LENGTH_COMMIT_SHA>
+```
+
+### Azure
+```yaml
+- uses: azure/login@<FULL_LENGTH_COMMIT_SHA>
+```
+
+### GCP
+```yaml
+- uses: google-github-actions/auth@<FULL_LENGTH_COMMIT_SHA>
+```
+
+## Checklist
+- [ ] OIDC configured.
+- [ ] Actions pinned by SHA.
+- [ ] `permissions` minimized.
+- [ ] Environment protection enabled for production.
+- [ ] Validation steps included (for example, `terraform fmt -check`).
