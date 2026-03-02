@@ -1,28 +1,49 @@
-<!-- markdownlint-disable -->
-<!--- Please always add a PR description as if nobody knows anything about the context these changes come from. -->
-<!--- Even if we are all from our internal team, we may not be on the same page. -->
-<!--- Write this PR as you were contributing to a public OSS project, where nobody knows you and you have to earn their trust. -->
-<!--- This will improve our projects in the long run! Thanks. -->
+<!-- markdownlint-disable-file MD041 -->
+<!-- PR title format: <type>(<scope>): <summary> -->
+<!-- Examples: feat(terraform): add new SCP policy -->
+<!--           fix(scripts): correct JSON validation logic -->
 
-### List of changes
+## Description
 
-<!--- Describe your changes in detail -->
+<!-- Describe the governance change and the intended enforcement behavior. -->
 
-### Motivation and context
+## Change Type
 
-<!--- Why is this change required? What problem does it solve? -->
+- [ ] Custom role update
+- [ ] Policy definition update
+- [ ] Policy assignment update
+- [ ] Terraform module/refactor update
+- [ ] Documentation only
+- [ ] Other
 
-### Type of changes
+## Governance Impact
 
-- [ ] Add new governance rule
-- [ ] Update existing governance rule
-- [ ] Remove existing governance rule
+- Scope level (`org`, `folder`, `project`):
+- Affected policies/roles:
+- Enforcement effect:
+- Rollback strategy:
 
-### Does this introduce a breaking change?
+## Testing Instructions
 
-- [ ] Yes
-- [ ] No
+<!-- Step-by-step instructions for reviewers to validate changes -->
+1.
+2.
 
-### Other information
+## Validation Evidence
 
-<!-- Any other information that is important to this PR such as screenshots of how the component looks before and after the change. -->
+- Terraform plan summary:
+- Non-production validation summary:
+- Additional checks:
+
+## Breaking Changes
+
+- [ ] This PR contains breaking changes
+<!-- If checked, describe what breaks and migration path -->
+
+## Checklist
+
+- [ ] Governance effect is explicit and justified
+- [ ] Scope (`org`/`folder`/`project`) is correct
+- [ ] `terraform fmt -recursive` and `terraform validate` executed
+- [ ] Non-production verification completed for impactful changes
+- [ ] No sensitive data included

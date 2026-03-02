@@ -1,125 +1,39 @@
 ---
+description: Terraform authoring standards for readability, typed interfaces, and validation-first delivery.
 applyTo: "**/*.tf"
 ---
 
-# Terraform Files Instructions - eng-gcp-governance
+# Terraform Instructions
 
-## GCP-Specific Resources
+## Formatting
+- Run `terraform fmt` before commit.
+- Use 2-space indentation.
+- Use `tfenv` (or repository equivalent) for Terraform version management.
 
-### Custom IAM Roles
+## Naming conventions
+- Resources: `snake_case` (for example `aws_iam_role.lambda_execution`).
+- Variables: `snake_case` with `description`.
+- Locals: `snake_case`, grouped by domain.
 
-```hcl
-resource "google_organization_iam_custom_role" "<name>" {
-  role_id     = "pagopa_<domain>_<purpose>"
-  org_id      = var.organization_id
-  title       = "<Human Readable Title>"
-  description = "<Clear description of purpose>"
-  permissions = [
-    # List only necessary permissions - least privilege
-  ]
-}
-```
+## Structure
+- Always add `description` to variables.
+- Use type constraints for variables.
+- Prefer `for_each` over `count` when logical keys matter.
+- Prefer data sources over hardcoded IDs.
+- Keep backend/state configuration explicit and consistent with repository standards.
+- Ensure state locking is enabled when supported by the backend.
+- Keep workspace/environment separation explicit.
 
-### Organization Policies
+## Lifecycle and safety
+- Use `prevent_destroy` for critical resources when appropriate.
+- Use `create_before_destroy` for replacement-sensitive resources.
+- Use `ignore_changes` only with documented rationale.
 
-```hcl
-resource "google_org_policy_policy" "<policy_name>" {
-  name   = "folders/${var.folder_id}/policies/<constraint.name>"
-  parent = "folders/${var.folder_id}"
+## Multi-cloud baseline
+- Pin provider versions in `required_providers`.
+- Keep provider configuration explicit for region/subscription/project scope.
+- Reuse repository-specific provider conventions for AWS, Azure, and GCP.
 
-  spec {
-    inherit_from_parent = false  # ALWAYS specify explicitly
-
-    rules {
-      enforce = "TRUE"  # or "FALSE"
-    }
-  }
-}
-```
-
-## Provider Configuration
-
-```hcl
-terraform {
-  required_version = ">= 1.7.0"
-
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "6.28.0"  # Pin to specific version
-    }
-  }
-
-  backend "gcs" {}
-}
-
-provider "google" {
-  project               = var.project_id
-  billing_project       = var.project_id
-  user_project_override = true
-  region                = var.region
-  zone                  = var.zone
-}
-```
-
-## Naming Conventions
-
-| Resource Type | Pattern | Example |
-|--------------|---------|---------|
-| Custom Role | `pagopa_<domain>_<purpose>` | `pagopa_mailsage_user` |
-| Policy Resource | `<service>_<constraint>` | `storage_publicAccessPrevention` |
-| Policy File | `01_<service>_<constraint>.tf` | `01_storage_publicAccessPrevention.tf` |
-| Variables | `snake_case` | `folder_id_prod` |
-
-## File Organization
-
-- `00_main.tf` - Provider and backend configuration
-- `01_*.tf` - Primary resources
-- `02_*.tf` - Environment-specific resources
-- `03_*.tf` - Custom resources
-- `99_variables.tf` - Input variables
-- `99_outputs.tf` - Output values
-
-## Best Practices
-
-1. **One resource per file** for policies and roles
-2. **Use variables** for all IDs (organization, folder, project)
-3. **Pin provider version** to avoid breaking changes
-4. **Explicit inheritance** - always set `inherit_from_parent`
-5. **Run `terraform fmt`** before committing
-6. **Add descriptions** to all variables and resources
-
-## Common Constraints
-
-| Constraint | Purpose |
-|-----------|---------|
-| `compute.skipDefaultNetworkCreation` | Prevent default VPC |
-| `storage.publicAccessPrevention` | Block public buckets |
-| `iam.managed.disableServiceAccountKeyCreation` | No SA keys |
-| `iam.managed.disableServiceAccountKeyUpload` | No key uploads |
-| `gcp.resourceLocations` | Restrict regions |
-
-## Forbidden Patterns
-
-```hcl
-# ❌ WRONG - Hardcoded folder ID
-parent = "folders/47551051631"
-
-# ✅ CORRECT - Use variable
-parent = "folders/${var.folder_id}"
-
-# ❌ WRONG - Missing inherit_from_parent
-spec {
-  rules {
-    enforce = "TRUE"
-  }
-}
-
-# ✅ CORRECT - Explicit inheritance
-spec {
-  inherit_from_parent = false
-  rules {
-    enforce = "TRUE"
-  }
-}
-```
+## Validation
+- Run `terraform validate` after changes.
+- Review `terraform plan` before apply.

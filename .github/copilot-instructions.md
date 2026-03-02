@@ -1,34 +1,101 @@
-# Copilot Instructions - eng-gcp-governance
+# Global Copilot Instructions
 
-## 🎯 Repository Purpose
-Manages **GCP Organization Policies** and **Custom IAM Roles** for PagoPA, applying security guardrails across projects and folders.
+You are an expert software/platform engineer. Optimize for secure, consistent, and readable changes.
 
-## 📁 Key Project Structure
-- `src/01_custom_roles/`: Custom IAM roles with least privilege (Organization-level).
-- `src/02_policy_custom/`: Definitions of custom Organization Policy constraints.
-- `src/03_policy_set/` (if exists) or assignments in `src/03_policy_assignments/`:
-    - `01_pagopa.tf`: Org-level assignments.
-    - `02_dev.tf`, `02_uat.tf`, `02_prod.tf`: Environment-specific assignments.
+## Language policy
+- User chat can be Italian.
+- Everything in the repository must be English: code, comments, logs, CLI output, docs, commit/PR text, and configuration files.
 
-## 🛠️ Critical Workflows
-1. **Add Role**: Create `google_organization_iam_custom_role` in `src/01_custom_roles/`.
-2. **Assign Policy**: Update modules in `src/03_policy_assignments/modules/` or files in `src/03_policy_assignments/`.
-3. **Execution**: Use `./terraform.sh plan|apply` from the target component folder.
+## Instruction order
+1. Read local `AGENTS.md` first and follow its decision priority.
+2. Apply `copilot-code-review-instructions.md` and `copilot-commit-message-instructions.md` when relevant (or `.github/...` paths in repositories using `.github` layout).
+3. Use `repo-profiles.yml` as optional profile guidance for stack-specific setup (or `.github/repo-profiles.yml` in `.github` layout).
+4. Apply matching `instructions/*.instructions.md` (or `.github/instructions/*.instructions.md` in `.github` layout).
+5. Use `prompts/*.prompt.md` for repeatable tasks (or `.github/prompts/*.prompt.md` in `.github` layout).
+6. Use `skills/*/SKILL.md` for implementation patterns (or `.github/skills/*/SKILL.md` in `.github` layout).
 
-## ✅ Mandatory Conventions
-- **Naming**:
-    - Roles: `pagopa_<domain>_<purpose>` (e.g., `pagopa_mailsage_user`).
-    - Policies: `01_<service>_<constraint>.tf`.
-- **Terraform**: Use GCS backend `tfapporg-terraform-state`, pin provider version (see `00_main.tf`), and use `google_org_policy_policy` resource.
-- **Organization IDs**: PagoPA Root (`47551051631`), Dev (`286367851296`), Uat (`794602495691`), Prod (`797731740140`).
-- **Logging**: Use emoji prefixes (✅ Success, ❌ Error, ⚠️ Warning, 🔍 Info, 🚀 Start).
+## Non-negotiables
+- Least privilege.
+- No hardcoded secrets.
+- Preserve existing conventions.
+- Prefer domain-driven design (DDD) for non-trivial application code.
+- Prefer early return/guard clauses.
+- Prioritize readability over clever abstractions.
+- Keep repository artifacts in English.
+- Do not modify `README.md` files unless explicitly requested by the user.
+- Update non-README technical docs in English when behavior changes.
 
-## 🚫 What NOT to Do
-- ❌ Disable organization policies without security approval.
-- ❌ Hardcode folder or project IDs (use variables).
-- ❌ Use deprecated policy resources (always use `google_org_policy_policy`).
-- ❌ Create roles at project level (always use organization level).
+## Python template policy
+- When asked to create templates for Python-related flows, use Jinja templates.
+- Template filenames must follow `<file-name>.<extension>.j2`.
+- Keep templates mostly complete and parameterize only values explicitly passed from the caller.
 
-## 📚 Reference
-See `README.md` for specific folder IDs and resource hierarchy details.
+## Test execution sequence
+- For technologies with tests, follow this order on modify tasks:
+  1. Edit implementation code first.
+  2. Run relevant existing tests before editing test files.
+  3. Analyze failures to identify what is broken or misaligned.
+  4. Update tests only when behavior changes are intentional or new behavior has no existing coverage.
+- Do not preemptively change tests before the first post-change test run.
 
+## Portability
+- This configuration is intentionally reusable across different repositories and tech stacks.
+- Apply only the instruction files relevant to the files being changed.
+- Follow `security-baseline.md` and `DEPRECATION.md` when introducing structural changes (or `.github/...` equivalents in `.github` layout).
+
+## Script standards (Bash/Python)
+- Apply to both create and modify flows.
+- Start with purpose + usage examples.
+- Use emoji logs for state transitions.
+- Use simple control flow and early returns.
+- Bash: always `#!/usr/bin/env bash` (never POSIX `sh`).
+- Python: add unit tests for testable logic.
+- Python: if external dependencies are used, pin versions in `requirements.txt`.
+
+## Java and Node.js standards
+- Treat as project work (services/modules/components), not script work.
+- Add a short purpose JavaDoc/comment when intent is not obvious.
+- Keep unit tests simple and BDD-like.
+- Java default: JUnit 5 with `@DisplayName` and `given_when_then` naming.
+- Node default: built-in `node:test` + `node:assert/strict` (`describe`/`it` when available).
+
+## Validation baseline
+- Terraform: `terraform fmt` and `terraform validate`.
+- Bash: `bash -n` and `shellcheck -s bash` (if available).
+- Python/Java/Node.js: run unit tests relevant to the change.
+- Run `scripts/validate-copilot-customizations.sh` for customization changes (or `.github/scripts/...` in `.github` layout).
+
+
+## Repository Alignment
+- Repository: `eng-gcp-governance`
+- Recommended profile from `repo-profiles.yml`: `infrastructure-heavy`
+- Primary scope: GCP governance repository managing custom roles, org policies, and assignment rollouts through Terraform.
+- High-priority paths:
+  - `src/01_custom_roles`
+  - `src/02_policy_custom`
+  - `src/03_policy_assignments`
+- Default instruction set for daily tasks:
+  - `instructions/terraform.instructions.md`
+  - `instructions/json.instructions.md`
+  - `instructions/scripts.instructions.md`
+  - `instructions/yaml.instructions.md`
+  - `instructions/markdown.instructions.md`
+- Preferred prompts for repeatable work:
+  - `prompts/add-custom-role.prompt.md`
+  - `prompts/modify-policy.prompt.md`
+  - `prompts/add-policy-assignment.prompt.md`
+  - `prompts/cs-terraform.prompt.md`
+  - `prompts/github-pr-description.prompt.md`
+- Preferred skills:
+  - `skills/terraform-feature/SKILL.md`
+  - `skills/terraform-module/SKILL.md`
+  - `skills/cloud-policy/SKILL.md`
+  - `skills/script-bash/SKILL.md`
+  - `skills/pr-writing/SKILL.md`
+- Minimum validation before commit:
+  - `terraform fmt -recursive`
+  - `terraform validate`
+  - `non-prod terraform plan at org/folder/project scope`
+  - `policy impact review before production`
+- Keep assistant-facing language mapped through AGENTS.md and avoid mentioning internal runtime names.
+- PRs must be completed using `.github/PULL_REQUEST_TEMPLATE.md` (or mirrored lowercase template).
