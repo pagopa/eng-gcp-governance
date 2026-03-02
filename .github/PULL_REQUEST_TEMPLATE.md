@@ -1,3 +1,8 @@
+<!-- markdownlint-disable-file MD041 -->
+<!-- PR title format: <type>(<scope>): <summary> -->
+<!-- Examples: feat(terraform): add new SCP policy -->
+<!--           fix(scripts): correct JSON validation logic -->
+
 ## Description
 
 <!-- Describe the governance change and the intended enforcement behavior. -->
@@ -18,11 +23,22 @@
 - Enforcement effect:
 - Rollback strategy:
 
+## Testing Instructions
+
+<!-- Step-by-step instructions for reviewers to validate changes -->
+1.
+2.
+
 ## Validation Evidence
 
 - Terraform plan summary:
 - Non-production validation summary:
 - Additional checks:
+
+## Breaking Changes
+
+- [ ] This PR contains breaking changes
+<!-- If checked, describe what breaks and migration path -->
 
 ## Checklist
 

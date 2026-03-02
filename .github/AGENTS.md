@@ -21,10 +21,8 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 - Resolve stack from target files and explicit prompt inputs.
 - Primary `applyTo` rules (one instruction per file type):
   - `**/*.py` -> `instructions/python.instructions.md`
-  - `**/*.java` -> `instructions/java.instructions.md`
   - `**/*.sh` -> `instructions/bash.instructions.md`
   - `**/*.tf` -> `instructions/terraform.instructions.md`
-  - `**/*.js,**/*.cjs,**/*.mjs,**/*.ts,**/*.tsx` -> `instructions/nodejs.instructions.md`
   - `**/*.yml,**/*.yaml` -> `instructions/yaml.instructions.md`
   - `**/*.md` -> `instructions/markdown.instructions.md`
   - `**/Makefile,**/*.mk` -> `instructions/makefile.instructions.md`
@@ -33,7 +31,6 @@ This file is for GitHub Copilot and AI assistants working in this repository.
   - `**/authorizations/**/*.json,**/organization/**/*.json,**/src/**/*.json,**/data/**/*.json` -> `instructions/json.instructions.md`
 - Overlay rules (additive — apply alongside the primary instruction above):
   - `**/*.sh,**/scripts/**/*.py,**/scripts/**/*.sh` -> `instructions/scripts.instructions.md`
-  - `**/*lambda*.tf,**/*lambda*.py,**/*lambda*/**` -> `instructions/lambda.instructions.md`
 - If a change spans multiple stacks, apply all relevant instruction files.
 - Overlay instructions never conflict with primary instructions — they add cross-cutting standards.
 
@@ -62,11 +59,7 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 ## Available Skills
 - `cicd-workflow` (`skills/cicd-workflow/SKILL.md`): GitHub Actions workflow design and CI/CD patterns.
 - `cloud-policy` (`skills/cloud-policy/SKILL.md`): AWS SCP, Azure Policy, GCP Org Policy governance.
-- `composite-action` (`skills/composite-action/SKILL.md`): Reusable GitHub composite actions.
-- `data-registry` (`skills/data-registry/SKILL.md`): JSON data registry entries and schema patterns.
 - `pr-writing` (`skills/pr-writing/SKILL.md`): PR title/body generation from template and diff.
-- `project-java` (`skills/project-java/SKILL.md`): Java service code with DDD, Spring Boot, JUnit 5.
-- `project-nodejs` (`skills/project-nodejs/SKILL.md`): Node.js service code with DDD, ESM, node:test.
 - `project-python` (`skills/project-python/SKILL.md`): Python project code with DDD, pytest, type hints.
 - `script-bash` (`skills/script-bash/SKILL.md`): Bash utility scripts with strict mode and shellcheck.
 - `script-python` (`skills/script-python/SKILL.md`): Python utility scripts with argparse and tests.
@@ -77,21 +70,17 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 - `cs-add-unit-tests` (`prompts/cs-add-unit-tests.prompt.md`): Add or improve unit tests.
 - `cs-bash-script` (`prompts/cs-bash-script.prompt.md`): Create or modify Bash scripts.
 - `cs-cloud-policy` (`prompts/cs-cloud-policy.prompt.md`): Create cloud governance policies.
-- `cs-data-registry` (`prompts/cs-data-registry.prompt.md`): Create JSON data registry entries.
-- `cs-java` (`prompts/cs-java.prompt.md`): Generate Java service code.
-- `cs-nodejs` (`prompts/cs-nodejs.prompt.md`): Generate Node.js service code.
 - `cs-python-script` (`prompts/cs-python-script.prompt.md`): Create Python utility scripts.
 - `cs-python` (`prompts/cs-python.prompt.md`): Generate Python project code.
 - `cs-terraform` (`prompts/cs-terraform.prompt.md`): Create Terraform modules and features.
 - `cs-github-action` (`prompts/github-action.prompt.md`): Create GitHub Actions workflows.
-- `cs-composite-action` (`prompts/github-composite-action.prompt.md`): Create composite actions.
 - `cs-pr-description` (`prompts/github-pr-description.prompt.md`): Generate PR descriptions.
 
 ## Governance References
 - `security-baseline.md`: Portable security controls baseline for all Copilot customization.
 - `DEPRECATION.md`: Lifecycle and deprecation policy for all customization assets.
 - `repo-profiles.yml`: Advisory profile catalog for different repository types.
-- `scripts/validate-copilot-customizations.sh`: Validation gate for customization changes.
+- `.github/scripts/validate-copilot-customizations.sh`: Validation gate for customization changes.
 - `templates/AGENTS.template.md`: Template for onboarding new repositories.
 - `templates/copilot-quickstart.md`: Quick start guide for new teams.
 
@@ -109,7 +98,7 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 - Never skip validation after making changes.
 
 ## PR and Workflow Conventions
-- PR content must follow `pull_request_template.md` in exact section order.
+- PR content must follow `PULL_REQUEST_TEMPLATE.md` in exact section order.
 - For GitHub Actions pinning, each full SHA must include an adjacent comment with release/tag reference.
 
 ## Backlog Triggers
@@ -157,12 +146,9 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 - `.github/instructions/bash.instructions.md`
 - `.github/instructions/github-action-composite.instructions.md`
 - `.github/instructions/github-actions.instructions.md`
-- `.github/instructions/java.instructions.md`
 - `.github/instructions/json.instructions.md`
-- `.github/instructions/lambda.instructions.md`
 - `.github/instructions/makefile.instructions.md`
 - `.github/instructions/markdown.instructions.md`
-- `.github/instructions/nodejs.instructions.md`
 - `.github/instructions/python.instructions.md`
 - `.github/instructions/scripts.instructions.md`
 - `.github/instructions/terraform.instructions.md`
@@ -176,14 +162,10 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 - `.github/prompts/cs-add-unit-tests.prompt.md`
 - `.github/prompts/cs-bash-script.prompt.md`
 - `.github/prompts/cs-cloud-policy.prompt.md`
-- `.github/prompts/cs-data-registry.prompt.md`
-- `.github/prompts/cs-java.prompt.md`
-- `.github/prompts/cs-nodejs.prompt.md`
 - `.github/prompts/cs-python-script.prompt.md`
 - `.github/prompts/cs-python.prompt.md`
 - `.github/prompts/cs-terraform.prompt.md`
 - `.github/prompts/github-action.prompt.md`
-- `.github/prompts/github-composite-action.prompt.md`
 - `.github/prompts/github-pr-description.prompt.md`
 - `.github/prompts/modify-policy.prompt.md`
 - `.github/prompts/script-bash.prompt.md`
@@ -194,11 +176,7 @@ This file is for GitHub Copilot and AI assistants working in this repository.
 ### Skills
 - `.github/skills/cicd-workflow/SKILL.md`
 - `.github/skills/cloud-policy/SKILL.md`
-- `.github/skills/composite-action/SKILL.md`
-- `.github/skills/data-registry/SKILL.md`
 - `.github/skills/pr-writing/SKILL.md`
-- `.github/skills/project-java/SKILL.md`
-- `.github/skills/project-nodejs/SKILL.md`
 - `.github/skills/project-python/SKILL.md`
 - `.github/skills/script-bash/SKILL.md`
 - `.github/skills/script-python/SKILL.md`
