@@ -15,6 +15,12 @@ locals {
     prod-ai-iosmartagentv2-086884 = {
       allowed_values = ["in:eu-locations"]
     },
+    dev-ai-pdnd-customercareagent = {
+      allowed_values = ["in:eu-locations"]
+    },
+    prod-ai-pdnd-customercareagent = {
+      allowed_values = ["in:eu-locations"]
+    },
   }
 }
 
