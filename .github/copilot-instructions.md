@@ -65,37 +65,7 @@ You are an expert software/platform engineer. Optimize for secure, consistent, a
 - Python/Java/Node.js: run unit tests relevant to the change.
 - Run `scripts/validate-copilot-customizations.sh` for customization changes (or `.github/scripts/...` in `.github` layout).
 
-
-## Repository Alignment
-- Repository: `eng-gcp-governance`
-- Recommended profile from `repo-profiles.yml`: `infrastructure-heavy`
-- Primary scope: GCP governance repository managing custom roles, org policies, and assignment rollouts through Terraform.
-- High-priority paths:
-  - `src/01_custom_roles`
-  - `src/02_policy_custom`
-  - `src/03_policy_assignments`
-- Default instruction set for daily tasks:
-  - `instructions/terraform.instructions.md`
-  - `instructions/json.instructions.md`
-  - `instructions/scripts.instructions.md`
-  - `instructions/yaml.instructions.md`
-  - `instructions/markdown.instructions.md`
-- Preferred prompts for repeatable work:
-  - `prompts/add-custom-role.prompt.md`
-  - `prompts/modify-policy.prompt.md`
-  - `prompts/add-policy-assignment.prompt.md`
-  - `prompts/cs-terraform.prompt.md`
-  - `prompts/github-pr-description.prompt.md`
-- Preferred skills:
-  - `skills/terraform-feature/SKILL.md`
-  - `skills/terraform-module/SKILL.md`
-  - `skills/cloud-policy/SKILL.md`
-  - `skills/script-bash/SKILL.md`
-  - `skills/pr-writing/SKILL.md`
-- Minimum validation before commit:
-  - `terraform fmt -recursive`
-  - `terraform validate`
-  - `non-prod terraform plan at org/folder/project scope`
-  - `policy impact review before production`
-- Keep assistant-facing language mapped through AGENTS.md and avoid mentioning internal runtime names.
-- PRs must be completed using `.github/PULL_REQUEST_TEMPLATE.md` (or mirrored lowercase template).
+## Repository-specific context
+- Use `AGENTS.md` as the single source of truth for repository-specific routing, preferred prompts/skills, inventories, and validation details.
+- Avoid repeating large prompt/skill catalogs here; load only the files needed for the current task.
+- Keep assistant-facing language mapped through `AGENTS.md` and avoid mentioning internal runtime names.
