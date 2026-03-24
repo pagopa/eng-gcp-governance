@@ -1,8 +1,5 @@
 locals {
   gcp_resourceLocations = {
-    dev-ai-io-107243 = {
-      allowed_values = ["in:eu-locations"]
-    },
     dev-ai-playground-01 = {
       allowed_values = ["in:eu-locations"]
     },
