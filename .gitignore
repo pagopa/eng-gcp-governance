@@ -74,3 +74,4 @@ htmlcov/
 venv/
 env/
 .python-version
+/tmp/superpowers/
