@@ -43,8 +43,6 @@ jobs:
         with:
           path: ${{ runner.temp }}/pre-commit-cache
           key: pre-commit-${{ runner.os }}-config-hash-${{ hashFiles('.pre-commit-config.yaml', '.terraform-version', '**/.terraform.lock.hcl') }}
-          restore-keys: |
-            pre-commit-${{ runner.os }}-config-hash-
 
       - name: Ensure pre-commit cache directory
         env:
