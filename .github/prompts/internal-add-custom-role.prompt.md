@@ -8,7 +8,7 @@ argument-hint: role_name=<name> domain=<domain> role_title=<title> role_descript
 # Internal GCP Custom Role Task
 
 ## Instructions
-1. Use `.github/skills/tech-ai-cloud-policy/SKILL.md`.
+1. Use `.github/skills/internal-cloud-policy/SKILL.md`.
 2. Create or update a file under `src/01_custom_roles/`, following the repository pattern `02_<domain>_<role_name>.tf`.
 3. Match the current role structure:
    - `resource "google_organization_iam_custom_role" "pagopa_<domain>_<role_name>"`;

@@ -8,7 +8,7 @@ argument-hint: env_name=<name> folder_id=<id> folder_description=<text>
 # Internal GCP Environment Module Task
 
 ## Instructions
-1. Use `.github/skills/tech-ai-terraform-feature/SKILL.md`.
+1. Use `.github/skills/internal-terraform/SKILL.md`.
 2. Create the module directory `src/03_policy_assignments/modules/${input:env_name}/`.
 3. Match the existing module layout already used by `modules/dev/`:
    - `00_main.tf`
