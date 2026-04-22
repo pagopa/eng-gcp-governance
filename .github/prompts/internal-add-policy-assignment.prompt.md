@@ -8,7 +8,7 @@ argument-hint: constraint_name=<name> environment=<pagopa|dev|uat|prod|custom> e
 # Internal GCP Policy Assignment Task
 
 ## Instructions
-1. Use `.github/skills/tech-ai-cloud-policy/SKILL.md`.
+1. Use `.github/skills/internal-cloud-policy/SKILL.md`.
 2. Create or update the policy file under `src/03_policy_assignments/modules/${input:environment}/`.
 3. Follow the repository's existing file naming and resource pattern:
    - file name `01_<service>_<constraint>.tf`;

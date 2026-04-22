@@ -8,7 +8,7 @@ argument-hint: policy_file=<relative-path> change_type=<enforcement|inheritance|
 # Internal GCP Policy Modification Task
 
 ## Instructions
-1. Use `.github/skills/tech-ai-cloud-policy/SKILL.md`.
+1. Use `.github/skills/internal-cloud-policy/SKILL.md`.
 2. Update only the requested policy file under `src/03_policy_assignments/modules/`.
 3. Preserve the existing resource shape already used in that file, especially:
    - `name` and `parent` based on `var.folder_id`;
