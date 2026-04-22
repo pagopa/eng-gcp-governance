@@ -1,8 +1,3 @@
-variable "organization_id" {
-  type    = string
-  default = "520838205140"
-}
-
 variable "project_id" {
   description = "ProjectID Google Cloud"
   type        = string

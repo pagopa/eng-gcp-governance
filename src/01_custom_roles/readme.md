@@ -1,10 +1,16 @@
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.7.0 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | 6.28.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_google"></a> [google](#provider\_google) | 6.28.0 |
 
 ## Modules
 
@@ -15,7 +21,6 @@ No modules.
 | Name | Type |
 |------|------|
 | [google_organization_iam_custom_role.pagopa_mailsage_user](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/resources/organization_iam_custom_role) | resource |
-| [google_project.project](https://registry.terraform.io/providers/hashicorp/google/6.28.0/docs/data-sources/project) | data source |
 
 ## Inputs
 
@@ -29,4 +34,4 @@ No modules.
 ## Outputs
 
 No outputs.
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

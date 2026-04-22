@@ -18,9 +18,3 @@ provider "google" {
   region                = var.region
   zone                  = var.zone
 }
-
-# data "google_project" "current" {}
-
-data "google_project" "project" {
-  project_id = "organization-443016"
-}

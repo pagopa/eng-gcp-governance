@@ -1,12 +1,18 @@
 # 03_policy_assignments
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.7.0 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | 6.28.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_google"></a> [google](#provider\_google) | 6.28.0 |
 
 ## Modules
 
@@ -28,13 +34,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_customer_id"></a> [customer\_id](#input\_customer\_id) | CustomerID Google Cloud | `string` | `"C00siwdxu"` | no |
-| <a name="input_domain"></a> [domain](#input\_domain) | Domain Google Workspace | `string` | `"pagopa.it"` | no |
-| <a name="input_folder_id_dev"></a> [folder\_id\_dev](#input\_folder\_id\_dev) | FolderID Google Cloud Dev | `string` | `"286367851296"` | no |
 | <a name="input_folder_id_pagopa"></a> [folder\_id\_pagopa](#input\_folder\_id\_pagopa) | FolderID Google Cloud | `string` | `"47551051631"` | no |
-| <a name="input_folder_id_prod"></a> [folder\_id\_prod](#input\_folder\_id\_prod) | FolderID Google Cloud Prod | `string` | `"797731740140"` | no |
-| <a name="input_folder_id_uat"></a> [folder\_id\_uat](#input\_folder\_id\_uat) | FolderID Google Cloud UAT | `string` | `"794602495691"` | no |
-| <a name="input_organization_id"></a> [organization\_id](#input\_organization\_id) | OrganizationID Google Cloud | `string` | `"520838205140"` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | ProjectID Google Cloud | `string` | `"organization-443016"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region Google Cloud | `string` | `"europe-west8"` | no |
 | <a name="input_zone"></a> [zone](#input\_zone) | Zone Google Cloud | `string` | `"europe-west8-a"` | no |
@@ -45,4 +45,4 @@
 |------|-------------|
 | <a name="output_GCP_project_id"></a> [GCP\_project\_id](#output\_GCP\_project\_id) | n/a |
 | <a name="output_GCP_project_number"></a> [GCP\_project\_number](#output\_GCP\_project\_number) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
