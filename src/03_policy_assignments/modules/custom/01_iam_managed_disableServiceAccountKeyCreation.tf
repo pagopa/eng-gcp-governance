@@ -23,6 +23,9 @@ locals {
     },
     dev-ai-iosmartagentv2-560070 = {
       enforce = "FALSE"
+    },
+    dev-ai-pdnd-customercareagent = {
+      enforce = "FALSE"
     }
   }
 }
