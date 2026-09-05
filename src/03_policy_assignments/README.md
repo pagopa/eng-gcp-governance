@@ -1,5 +1,54 @@
 # 03_policy_assignments
 
+This Terraform root assigns GCP organization policies to folders and projects
+through local target modules.
+
+- [Purpose](#purpose)
+- [Responsibilities](#responsibilities)
+- [Inputs and outputs](#inputs-and-outputs)
+- [Module map](#module-map)
+- [Validation](#validation)
+
+## Purpose
+
+Use this root after reviewing the custom role and policy-definition layers to
+coordinate policy assignments across governance targets.
+
+## Responsibilities
+
+- Load the `custom`, `dev`, `pagopa`, `prod`, and `uat` assignment modules.
+- Provide assignment-root variables and outputs.
+- Target the configured GCP projects and folders.
+- Preserve the root's separate Terraform state prefix.
+- Use `eng-gcp-governance/policy_assignments` for that prefix.
+
+## Inputs and outputs
+
+The root defines project, folder, region, and zone inputs and exposes the
+configured GCP project ID and project number. `pagopa` receives
+`folder_id_pagopa`; the other module calls currently use local module defaults
+or no arguments.
+
+## Module map
+
+| Module | Current evidence |
+| --- | --- |
+| `custom` | Project-level location and service-account key policies. |
+| `pagopa` | Folder-level location, public-access, and key policies. |
+| `dev` | No resources in the current generated documentation. |
+| `prod` | No resources in the current generated documentation. |
+| `uat` | No resources in the current generated documentation. |
+
+## Validation
+
+Review the root and selected module together. Run the configured Terraform
+formatting, documentation, validation, and lint hooks. A mutating `plan` or
+`apply` requires the repository's GCP authentication and backend context and is
+outside documentation validation.
+
+No diagram is provided because the complete layer flow is maintained in
+[docs/architecture.md](../../docs/architecture.md).
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

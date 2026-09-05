@@ -2,6 +2,16 @@
 
 This project contains all PagoPA policies and assignments to governance GCP workloads.
 
+## Contents
+
+- [Project structure](#project-structure)
+- [Requirements](#requirements)
+- [How to use it](#how-to-use-it)
+- [GCP docs](#gcp-docs)
+- [Policy evaluation](#policy-evaluation)
+- [Terraform lock.hcl](#terraform-lockhcl)
+- [Validation](#validation)
+
 ## Project structure
 
 * `src/01_custom_roles` contains custom roles created with least privileges principle
@@ -59,6 +69,25 @@ terraform providers lock \
   -platform=darwin_arm64 \
   -platform=linux_amd64
 ```
+
+## Validation
+
+Run the repository wrapper or the equivalent non-mutating Terraform checks from
+the root you are changing:
+
+```bash
+terraform fmt -check -recursive
+terraform init -backend=false -lockfile=readonly
+terraform validate -no-color
+```
+
+For documentation-only changes, run `git diff --check`. The generated
+repository structure reference below is retained as a separate generated
+section.
+
+No diagram is provided because the repository-wide policy flow is already
+covered by the architecture documentation and the component README for
+`src/03_policy_assignments`.
 
 ---
 ## Repository Structure & Details (Auto-generated)
