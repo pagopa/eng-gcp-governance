@@ -1,3 +1,40 @@
+# PagoPA Assignment Module
+
+This reusable Terraform module applies folder-level GCP organization policies
+for the PagoPA governance target.
+
+- [Purpose](#purpose)
+- [Responsibilities](#responsibilities)
+- [Inputs and outputs](#inputs-and-outputs)
+- [Validation](#validation)
+
+## Purpose
+
+Use this module from the policy-assignment root when the target folder is
+supplied through `folder_id`.
+
+## Responsibilities
+
+- Restrict allowed resource locations to the configured location set.
+- Enforce Cloud Storage public-access prevention.
+- Configure managed service-account-key creation and upload policies.
+- Keep policy inheritance explicit for each assignment.
+
+## Inputs and outputs
+
+The module requires `folder_id` and declares no Terraform outputs. The assignment
+root supplies the PagoPA folder value.
+
+## Validation
+
+Validate this module through
+[src/03_policy_assignments/](../../README.md) and the repository pre-commit
+Terraform hooks. Review folder scope and policy impact before applying changes.
+
+No diagram is provided because this module is a focused assignment
+implementation and its relationship to the root is documented in
+[src/03_policy_assignments/README.md](../../README.md).
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

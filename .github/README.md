@@ -2,6 +2,14 @@
 
 This folder contains global Copilot/Codex customization that can be reused across repositories.
 
+## Contents
+
+- [Structure](#structure)
+- [Agent routing](#agent-routing)
+- [Maintenance workflow](#maintenance-workflow)
+- [Notes](#notes)
+- [Validation](#validation)
+
 ## Structure
 - `copilot-instructions.md`: global baseline rules
 - `copilot-commit-message-instructions.md`: commit message policy
@@ -35,3 +43,17 @@ See `.github/agents/README.md` for details.
 ## Notes
 - `repo-profiles.yml` is currently advisory (human-readable profile catalog).
 - Use `templates/copilot-quickstart.md` for a short onboarding flow.
+
+## Validation
+
+From the repository root, run the focused customization validator:
+
+```bash
+.github/scripts/validate-copilot-customizations.sh --scope root --mode strict
+```
+
+For documentation-only changes, also run `git diff --check`.
+
+No diagram is provided because this README describes the contents and
+maintenance path of one configuration directory; repository-wide relationships
+belong in the architecture document.
