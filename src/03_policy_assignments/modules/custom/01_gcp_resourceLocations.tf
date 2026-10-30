@@ -21,6 +21,9 @@ locals {
     prod-ai-pdnd-customercareagent = {
       allowed_values = ["in:eu-locations"]
     },
+    dev-ai-pdnd-brain = {
+      allowed_values = ["in:eu-locations"]
+    }
   }
 }
 
